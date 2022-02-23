@@ -1,4 +1,4 @@
-import React, { useState }from 'react'
+import React, { useState, useEffect }from 'react'
 import {View , Text, Button , TextInput, ScrollView,StatusBar, StyleSheet, TouchableOpacity,Image}  from "react-native"
 import firebase from "../database/firebase";
 
@@ -11,6 +11,18 @@ const CreateUserScreen = (props) => {
         Boys: "",
         Girls: "",
     });
+    
+    useEffect(() => {
+        setState(() => ({ 
+            name: "",
+            Department: "",
+            Section: "",
+            Year: "",
+            Boys: "",
+            Girls: "",
+
+          }));
+    }, []);
 
     const handleChangeText = (name, value) => {
         setState({ ...state, [name]: value});
@@ -29,16 +41,7 @@ const CreateUserScreen = (props) => {
                     Boys: state. Boys,
                     Girls: state.Girls,
 
-                })
-                setState(() => ({ 
-                    name: "",
-                    Department: "",
-                    Section: "",
-                    Year: "",
-                    Boys: "",
-                    Girls: "",
-
-                  }))    
+                })  
               
             props.navigation.navigate("Home");
             
